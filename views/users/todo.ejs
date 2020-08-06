@@ -1,0 +1,31 @@
+<%- include ('../partials/header') %>
+
+
+<div id="container">
+    <div>
+    </div>
+    <div>
+        <form action="/users/todo" method="POST">
+            <div class="input-group input-group-md">
+                <input type="text" class="form-control" name="content" placeholder="Add New Todo"
+                    value="<%= typeof content != 'undefined' ? content : '' %>" />
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="submit">Submit </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <%- include ("../partials/messages") %>
+
+    <div>
+        <% todoTasks.forEach(details => { %>
+        <ul class="ul-todo">
+            <li class="li-todo"><span class="span-todo"><a href="/users/todo/remove/<%= details._id %>"
+                        class="remove"><i class="fa fa-trash"></i></a></span><%= details.content %></li>
+            <% }) %>
+        </ul>
+    </div>
+</div>
+
+
+<%- include ('../partials/footer') %>

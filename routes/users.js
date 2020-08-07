@@ -77,6 +77,7 @@ router.post('/register', (req, res) => {
 });
 
 router.post('/login', (req, res, next) => {
+  console.log(req.params)
   passport.authenticate('local', {
     successRedirect: '/users/dashboard',
     failureRedirect: '/users/login',
@@ -90,32 +91,46 @@ router.get('/logout', function (req, res) {
   res.redirect('/');
 });
 
+// Dashboard ------------------------------------------------------
+// Dashboard - GET dashboard page
 router.get('/dashboard', ensureAuthenticated, (req, res) => {
-  res.render('users/dashboard', { name: req.user.name });
+  res.render('users/dashboard', {
+    name: req.user.name,
+    id: req.user._id,
+    email: req.user.email
+  });
 });
 
+// Blog App ------------------------------------------------------
+// Blog App - GET blog page
 router.get('/blog', ensureAuthenticated, (req, res) => {
   res.render('users/blog', { name: req.user.name });
 });
 
+// Portfolio App ------------------------------------------------------
+// Portfolio App - GET portfolio page
 router.get('/portfolio', ensureAuthenticated, (req, res) => {
   res.render('users/portfolio', { name: req.user.name });
 });
 
+
+// Todo App ------------------------------------------------------
+// Todo App - GET todo page
 router.get('/todo', ensureAuthenticated, (req, res) => {
   TodoTask.find({}, (err, tasks) => {
     res.render('users/todo', { todoTasks: tasks });
   })
 });
-
+// Todo App
+// Todo App - POST add new todo
 router.post('/todo', async (req, res) => {
+  console.log(req.body)
   const { content } = req.body
   let errors = [];
   console.log(content)
   if (!content) {
     errors.push({ msg: 'Please make sure to press the submit button' });
   }
-
   if (errors.length > 0) {
     req.flash('error_msg', 'Please press submit')
     res.redirect('/users/todo');
@@ -131,8 +146,9 @@ router.post('/todo', async (req, res) => {
     }
   }
 });
-
-router.route("/todo/remove/:id").get((req, res) => {
+// Todo App
+// Todo App - Delete todo
+router.route('/todo/remove/:id').get((req, res) => {
   const id = req.params.id;
   TodoTask.findByIdAndRemove(id, err => {
     if (err) {
@@ -141,6 +157,15 @@ router.route("/todo/remove/:id").get((req, res) => {
     }
     req.flash('sucess_msg', 'Todo removed!');
     res.redirect('/users/todo')
+  });
+});
+
+// User Profile
+router.get('/profile', (req, res) => {
+  res.render('users/profile', {
+    name: req.user.name,
+    id: req.user._id,
+    email: req.user.email
   });
 });
 

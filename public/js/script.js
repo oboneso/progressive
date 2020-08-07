@@ -14,4 +14,9 @@ const updateTitle = () => {
     const updateHeaderText = document.getElementById('header-backBtn')
     updateHeaderText.innerText = 'Welcome!';
   }
+  if (url === 'PROFILE') {
+    const updateHeaderText = document.getElementById('header-profileBtn')
+    updateHeaderText.innerText = '';
+    updateHeaderText.classList.remove('nav-link');
+  }
 };

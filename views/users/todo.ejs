@@ -1,31 +1,46 @@
+<link rel="stylesheet" href="/css/todo_styles.css">
 <%- include ('../partials/header') %>
 
-
-<div id="container">
-    <div>
-    </div>
-    <div>
-        <form action="/users/todo" method="POST">
-            <div class="input-group input-group-md">
-                <input type="text" class="form-control" name="content" placeholder="Add New Todo"
-                    value="<%= typeof content != 'undefined' ? content : '' %>" />
-                <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="submit">Submit </button>
-                </div>
-            </div>
-        </form>
-    </div>
+<div class="center AlertCard">
     <%- include ("../partials/messages") %>
+</div>
+<div class="center Card mt-5 mb-5">
+    <form action="/users/todo" method="POST">
+        <div class="input-group input-group-md">
+            <input type="text" class="form-control" name="content" placeholder="Add New Todo"
+                value="<%= typeof content != 'undefined' ? content : '' %>" />
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="submit">Submit </button>
+            </div>
+        </div>
+    </form>
+</div>
 
-    <div>
-        <% todoTasks.forEach(details => { %>
-        <ul class="ul-todo">
-            <li class="li-todo"><span class="span-todo"><a href="/users/todo/remove/<%= details._id %>"
-                        class="remove"><i class="fa fa-trash"></i></a></span><%= details.content %></li>
-            <% }) %>
-        </ul>
+
+
+
+<% todoTasks.forEach(details => { %>
+<div class="center Card mb-2">
+    <div class="CardInner pt-2 pb-2">
+        <div class="container IconDiv">
+            <input placeholder="<%= details.content %>">
+            <a href="" class="remove">
+                <div class="Icon IconComplete btn-secondary">
+                    <i class="fas fa-check"></i>
+                </div>
+            </a>
+            <a href="/users/todo/remove/<%= details._id %>" class="remove">
+                <div class="Icon IconDelete">
+                    <i class="fa fa-trash"></i>
+                </div>
+            </a>
+        </div>
     </div>
 </div>
+<% }) %>
+
+
+
 
 
 <%- include ('../partials/footer') %>

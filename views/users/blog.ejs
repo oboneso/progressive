@@ -1,15 +1,33 @@
-<%- include ("../partials/header") %>
+<link rel="stylesheet" href="/css/blog_styles.css">
+<%- include ('../partials/header') %>
 
-<form>
-  <div class="form-group">
-    <label for="exampleFormControlInput1">Email address</label>
-    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+<div class="row">
+
+
+
+  <div class="Sidebar col-12 col-sm-3 col-md-3">
+    <button class=""><a href="/users/blog-new">Create New</a> </button>
   </div>
-  <div class="form-group">
-    <label for="exampleFormControlTextarea1">Example textarea</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+
+  <div class="MainBody col-12 col-sm-9 col-md-8">
+    <% blogPost.forEach(details => { %>
+    <div class="card mb-3" style="max-width: 540px;">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img src="/media/udemy.jpg" class="card-img" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title"> <%= details.title %></h5>
+            <p class="card-text"> <%= details.body %></p>
+            <p class="card-text"><small class="text-muted"><%= details.date %></small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% }) %>
   </div>
-</form>
 
 
+</div>
 <%- include ("../partials/footer") %>

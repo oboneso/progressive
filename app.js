@@ -1,16 +1,22 @@
-const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
-const mongoose = require('mongoose');
+const MongoClient = require('mongodb').MongoClient;
 const session = require('express-session');
 const flash = require('connect-flash')
+const mongoose = require('mongoose');
 const passport = require('passport');
+const express = require('express');
+const logger = require('morgan');
+const path = require('path');
 
 const app = express();
 
 // Passport Config
 require('./config/passport')(passport);
 
-// DB Config
+
+/*          - - - - - - - - - - - -
+            // DATABASE SECTION //
+           - - - - - - - - - - - -                  */
 const db = require('./config/keys').MONGO_URI;
 
 // Connect to Mongo via Mongoose
@@ -26,6 +32,21 @@ mongoose.connect(db, {
   .catch((err) => {
     console.log(err)
   });
+
+
+const connection = mongoose.connection;
+
+connection.on('error', console.error.bind(console, 'connection error:'));
+connection.once('open', function () {
+
+  connection.db.collection("users", function (err, collection) {
+    collection.find({}).toArray(function (err, users) {
+      console.log(); // it will print your collection data
+    })
+  });
+
+});
+
 
 // EJS
 app.use(expressLayouts);
@@ -44,6 +65,25 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use(function (req, res, next) {
+  res.locals.currentUser = req.user;
+
+  next();
+});
+
+app.use(setUser);
+
+function setUser(req, res, next) {
+  const userId = req.body.userId;
+  if (userId) {
+    req.user = users.find(user => user.id === userId)
+  }
+  next()
+}
+
+
+
+
 app.use(flash());
 
 app.use((req, res, next) => {
@@ -57,6 +97,8 @@ app.use((req, res, next) => {
 // Routes
 app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
+
+
 
 const PORT = process.env.PORT || 8081;
 

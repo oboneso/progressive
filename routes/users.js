@@ -1,6 +1,7 @@
 const express = require('express');
 const User = require('../models/User');
 const TodoTask = require('../models/TodoTask');
+const BlogPost = require('../models/Blog')
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const { ensureAuthenticated } = require('../config/auth')
@@ -16,10 +17,10 @@ router.get('/register', (req, res) => {
 });
 
 router.post('/register', (req, res) => {
-  const { name, email, password, password2 } = req.body;
+  const { name, username, email, password, password2 } = req.body;
   let errors = [];
 
-  if (!name || !email || !password || !password2) {
+  if (!name || !username || !email || !password || !password2) {
     errors.push({ msg: 'All fields are required' });
   }
 
@@ -35,6 +36,7 @@ router.post('/register', (req, res) => {
     res.render('users/register', {
       errors,
       name,
+      username,
       email,
       password,
       password2
@@ -47,6 +49,7 @@ router.post('/register', (req, res) => {
           res.render('users/register', {
             errors,
             name,
+            username,
             email,
             password,
             password2
@@ -54,6 +57,7 @@ router.post('/register', (req, res) => {
         } else {
           const newUser = new User({
             name,
+            username,
             email,
             password
           });
@@ -94,6 +98,8 @@ router.get('/logout', function (req, res) {
 // Dashboard ------------------------------------------------------
 // Dashboard - GET dashboard page
 router.get('/dashboard', ensureAuthenticated, (req, res) => {
+  const { name, id, email } = (req.user)
+  console.log(name)
   res.render('users/dashboard', {
     name: req.user.name,
     id: req.user._id,
@@ -104,7 +110,55 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
 // Blog App ------------------------------------------------------
 // Blog App - GET blog page
 router.get('/blog', ensureAuthenticated, (req, res) => {
-  res.render('users/blog', { name: req.user.name });
+  console.log(`${req.user.username} access /BLOG PAGE`)
+  const userId = req.user.id
+  BlogPost.find({ userId: userId }, (err, posts) => {
+    res.render('users/blog', {
+      blogPost: posts,
+      name: req.user.name,
+      username: req.user.username,
+      id: req.user._id,
+      email: req.user.email,
+      date: req.body.date
+    });
+  })
+});
+router.get('/blog-new', ensureAuthenticated, (req, res) => {
+  res.render('users/blog-new', {
+    name: req.user.name,
+    username: req.user.username,
+    id: req.user.id,
+    email: req.user.email
+  });
+});
+
+// Blog App - POST create new blog post
+router.post('/blog', ensureAuthenticated, async (req, res) => {
+  const userId = req.user._id;
+  const username = req.user.username;
+  const { title, body, author } = req.body;
+  let errors = [];
+
+  if (!title || !body) {
+    errors.push({ msg: 'Please make sure to press the submit button' });
+  }
+
+  if (errors.length > 0) {
+    req.flash('error_msg', 'Please press submit')
+    res.redirect('/users/blog');
+  } else {
+    try {
+      const blogPost = new BlogPost({ title: title, body: body, userId: userId })
+      await blogPost.save();
+      console.log(`New Blog Post: "${title}", made by "${userId}"`)
+
+      req.flash('success_msg', 'Todo Added!');
+      res.redirect('/users/blog');
+    } catch (err) {
+      console.log(err)
+      res.redirect('users/blog');
+    }
+  }
 });
 
 // Portfolio App ------------------------------------------------------
@@ -114,30 +168,42 @@ router.get('/portfolio', ensureAuthenticated, (req, res) => {
 });
 
 
-// Todo App ------------------------------------------------------
+
 // Todo App - GET todo page
 router.get('/todo', ensureAuthenticated, (req, res) => {
-  TodoTask.find({}, (err, tasks) => {
-    res.render('users/todo', { todoTasks: tasks });
+  console.log(`${req.user.username} access TODO PAGE`)
+  const userId = req.user.id
+  TodoTask.find({ userId: userId }, (err, tasks) => {
+    res.render('users/todo', {
+      todoTasks: tasks,
+      name: req.user.name,
+      username: req.user.username,
+      id: req.user._id,
+      email: req.user.email
+    });
   })
 });
-// Todo App
+
+
 // Todo App - POST add new todo
-router.post('/todo', async (req, res) => {
-  console.log(req.body)
-  const { content } = req.body
+router.post('/todo', ensureAuthenticated, async (req, res) => {
+  const userId = req.user._id;
+  const { content } = req.body;
   let errors = [];
-  console.log(content)
+
   if (!content) {
     errors.push({ msg: 'Please make sure to press the submit button' });
   }
+
   if (errors.length > 0) {
     req.flash('error_msg', 'Please press submit')
     res.redirect('/users/todo');
   } else {
     try {
-      const todoTask = new TodoTask({ content: content })
+      const todoTask = new TodoTask({ content: content, userId: userId })
       await todoTask.save();
+      console.log(`New todo: "${content}", made by "${userId}"`)
+
       req.flash('success_msg', 'Todo Added!');
       res.redirect('/users/todo');
     } catch (err) {
@@ -146,7 +212,8 @@ router.post('/todo', async (req, res) => {
     }
   }
 });
-// Todo App
+
+
 // Todo App - Delete todo
 router.route('/todo/remove/:id').get((req, res) => {
   const id = req.params.id;
@@ -160,10 +227,12 @@ router.route('/todo/remove/:id').get((req, res) => {
   });
 });
 
+
 // User Profile
-router.get('/profile', (req, res) => {
-  res.render('users/profile', {
+router.get('/my-account', (req, res) => {
+  res.render('users/my-account', {
     name: req.user.name,
+    username: req.user.username,
     id: req.user._id,
     email: req.user.email
   });

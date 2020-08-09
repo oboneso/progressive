@@ -1,0 +1,89 @@
+
+:root {
+  --border-radius: 10px;
+}
+
+
+
+.avatar {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 8em;
+}
+.name-title {
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+.Card {
+  margin-bottom: 15px;
+  padding: 1px;
+  border-radius: var(--border-radius);
+  background: linear-gradient(-67deg, #c4d6e7b3, rgba(255, 255, 255, 0.8));
+  overflow: hidden;
+  box-shadow: -2px -2px 6px rgba(255, 255, 255, 0.6), 2px 2px 12px #c8d8e7;
+  min-width: 350px;
+  max-width: 600px;
+}
+
+.CardInner {
+  padding: 16px, 16px;
+  background: #e2e9f4;
+  border-radius: var(--border-radius);
+}
+
+.container {
+  display: flex;
+}
+
+.Icon {
+  min-width: 46px;
+  min-height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--border-radius);
+  margin-right: 12px;
+  box-shadow: -2px -2px 6px rgba(255, 255, 255, 0.6), 2px 2px 12px #c8d8e7;
+}
+
+
+
+.InputContainer {
+  width: 100%;
+}
+
+input {
+  background: #e3edf7;
+  min-height: 46px;
+  border: none;
+  display: block;
+  font-weight: 600;
+  color: #a9b8c9;
+  -webkit-appearance: none;
+  transition: all 240ms ease-out;
+  width: 100%;
+}
+
+input:placeholder {
+  color: #6d7f8f
+}
+
+input:focus {
+  outline: none;
+  color: #6d7f8f;
+  background: #ffffff
+}
+
+.InputContainer {
+  --top-shadow: inset 1px 1px 3px #c5d4e3, inset 2px 2px 6px #c5d4e3;
+  --bottom-shadow: inset -2px -2pc 4px rgba(255, 255, 255, 0.7);
+  position: relative;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+
+
+

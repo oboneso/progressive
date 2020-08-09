@@ -1,0 +1,67 @@
+<link rel="stylesheet" href="/css/profile_styles.css">
+<%- include ('../partials/header') %>
+
+<img src="/media/male_avatar_placeholder.png" alt="" class="center avatar">
+
+<p class="name-title mb-5"><%- name.toUpperCase() %></p>
+
+<!-- username -->
+<div class="center Card">
+  <div class="CardInner pt-2">
+    <div class="container">
+      <div class="Icon">
+        <i class="fas fa-at"></i>
+      </div>
+      <div class="InputContainer">
+        <input placeholder="username">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- email -->
+<div class="center Card">
+  <div class="CardInner pt-2">
+    <div class="container">
+      <div class="Icon">
+        <i class="fas fa-envelope-open-text"></i>
+      </div>
+      <div class="InputContainer">
+        <input placeholder="<%- email %>">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- address -->
+<div class="center Card">
+  <div class="CardInner pt-2">
+    <div class="container">
+      <div class="Icon">
+        <i class="fas fa-map-marker-alt"></i>
+      </div>
+      <div class="InputContainer">
+        <input placeholder="address">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- user ID -->
+<div class="center Card">
+  <div class="CardInner pt-2">
+    <div class="container">
+      <div class="Icon">
+        <i class="far fa-id-card"></i>
+      </div>
+      <div class="InputContainer">
+        <input placeholder="<%- id %>">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<%- include ('../partials/footer') %>

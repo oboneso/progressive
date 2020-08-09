@@ -1,0 +1,49 @@
+<link rel="stylesheet" href="/css/blog_styles.css">
+<%- include ('../partials/header') %>
+
+<div class="container">
+
+  <button class=""><a href="/users/blog">back</a> </button>
+
+
+  <!-- Create Blog Post -->
+  <form action="/users/blog" method="POST">
+    <!-- Title -->
+    <div class="center Card">
+      <div class="CardInner">
+        <div class="Icon">
+          <label for="">Title</label>
+        </div>
+        <div class="InputContainer">
+          <input type="text" name="title" class="" id="exampleFormControlInput1" placeholder="Click here...">
+        </div>
+      </div>
+    </div>
+    <!-- Textarea -->
+    <div class="center Card">
+      <div class="CardInner">
+        <div class="Icon">
+          <label>Post</label>
+        </div>
+        <div class="InputContainer">
+          <textarea type="text" name="body" class="" id="exampleFormControlInput1" rows="6"
+            placeholder="Click here..."></textarea>
+        </div>
+      </div>
+    </div>
+    <!-- Author -->
+    <div class="center Card">
+      <div class="CardInner">
+        <div class="Icon">
+          <label for="">Author</label>
+        </div>
+        <div class="InputContainer">
+          <input type="text" class="" id="exampleFormControlInput1" placeholder="<%- username %>">
+        </div>
+      </div>
+    </div>
+    <button>Submit</button>
+  </form>
+
+</div>
+<%- include ("../partials/footer") %>

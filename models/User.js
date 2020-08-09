@@ -5,6 +5,10 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  username: {
+    type: String,
+    required: true
+  },
   email: {
     type: String,
     required: true
@@ -17,7 +21,7 @@ const UserSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   }
-})
+}, { collection: 'users' })
 
 const User = mongoose.model('User', UserSchema);
 

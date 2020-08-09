@@ -229,8 +229,8 @@ router.route('/todo/remove/:id').get((req, res) => {
 
 
 // User Profile
-router.get('/my-account', (req, res) => {
-  res.render('users/my-account', {
+router.get('/My-Account', (req, res) => {
+  res.render('users/My-Account', {
     name: req.user.name,
     username: req.user.username,
     id: req.user._id,

@@ -266,8 +266,26 @@ router.get('/youtube', (req, res) => {
     access_type: 'offline',
     scope: CONFIG.oauth2Credentials.scopes
   })
+  if (!req.cookies.jwt) {
+    return res.render('users/youtube', { loginLink: loginLink })
+  }
+  oauth2client.credentials = jwt.verify(req.cookies.jwt, CONFIG.JWTsecret);
 
-  return res.render('users/youtube', { loginLink: loginLink })
+  // Call the youtube api
+  const service = google.youtube('v3');
+
+  // Get user subscription list
+  service.subscriptions.list({
+    auth: oauth2client,
+    mine: true,
+    part: "snippet,contentDetails",
+    maxResults: 50
+  }).then((response) => {
+    console.log(response)
+
+    return res.render('users/subscriptions', { subscriptions: response.data.items })
+  })
+
 })
 
 router.get('/subscription_list', (req, res) => {

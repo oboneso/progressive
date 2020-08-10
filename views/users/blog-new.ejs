@@ -7,7 +7,7 @@
 
 
   <!-- Create Blog Post -->
-  <form action="/users/blog" method="POST">
+  <form action="/users/blog" enctype="multipart/form-data" method="POST">
     <!-- Title -->
     <div class="center Card">
       <div class="CardInner">
@@ -31,16 +31,30 @@
         </div>
       </div>
     </div>
-    <!-- Author -->
-    <div class="center Card">
-      <div class="CardInner">
-        <div class="Icon">
-          <label for="">Author</label>
-        </div>
-        <div class="InputContainer">
-          <input type="text" class="" id="exampleFormControlInput1" placeholder="<%- username %>">
+    <div class="row">
+      <!-- Author -->
+      <div class="col-6 center Card">
+        <div class="CardInner">
+          <div class="Icon">
+            <label for="">Author</label>
+          </div>
+          <div class="InputContainer form-group">
+            <input type="text" class="" id="exampleFormControlInput1" placeholder="<%- username %>">
+          </div>
         </div>
       </div>
+      <!-- Image -->
+      <div class="col-6 center Card">
+        <div class="CardInner">
+          <div class="Icon">
+            <label for="exampleFormControlFile1">>Image</label>
+          </div>
+          <div class="InputContainer form-group">
+            <input type="file" name="image" class="form-control-file" id="exampleFormControlFile1">
+          </div>
+        </div>
+      </div>
+
     </div>
     <button>Submit</button>
   </form>

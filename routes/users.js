@@ -5,6 +5,20 @@ const BlogPost = require('../models/Blog')
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const { ensureAuthenticated } = require('../config/auth')
+const aws = require('aws-sdk');
+const multer = require('multer');
+const multerS3 = require('multer-s3');
+const upload = require('../services/ImageUpload')
+// const upload = multer({ dest: 'media/uploads' });
+const singleUpload = upload.single("image");
+const bodyParser = require('body-parser')
+
+const CONFIG = require('../config');
+const google = require('googleapis').google;
+const jwt = require('jsonwebtoken');
+const OAuth2 = google.auth.OAuth2;
+const cookieParser = require("cookie-parser");
+
 
 const router = express.Router();
 
@@ -99,7 +113,6 @@ router.get('/logout', function (req, res) {
 // Dashboard - GET dashboard page
 router.get('/dashboard', ensureAuthenticated, (req, res) => {
   const { name, id, email } = (req.user)
-  console.log(name)
   res.render('users/dashboard', {
     name: req.user.name,
     id: req.user._id,
@@ -110,7 +123,6 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
 // Blog App ------------------------------------------------------
 // Blog App - GET blog page
 router.get('/blog', ensureAuthenticated, (req, res) => {
-  console.log(`${req.user.username} access /BLOG PAGE`)
   const userId = req.user.id
   BlogPost.find({ userId: userId }, (err, posts) => {
     res.render('users/blog', {
@@ -133,7 +145,8 @@ router.get('/blog-new', ensureAuthenticated, (req, res) => {
 });
 
 // Blog App - POST create new blog post
-router.post('/blog', ensureAuthenticated, async (req, res) => {
+router.post('/blog', ensureAuthenticated, upload.any('image'), async (req, res) => {
+  console.log(req.file)
   const userId = req.user._id;
   const username = req.user.username;
   const { title, body, author } = req.body;
@@ -159,7 +172,11 @@ router.post('/blog', ensureAuthenticated, async (req, res) => {
       res.redirect('users/blog');
     }
   }
+
 });
+
+
+
 
 // Portfolio App ------------------------------------------------------
 // Portfolio App - GET portfolio page
@@ -227,7 +244,6 @@ router.route('/todo/remove/:id').get((req, res) => {
   });
 });
 
-
 // User Profile
 router.get('/My-Account', (req, res) => {
   res.render('users/My-Account', {
@@ -238,5 +254,48 @@ router.get('/My-Account', (req, res) => {
   });
 });
 
+
+router.get('/youtube', (req, res) => {
+  const oauth2client = new OAuth2(
+    CONFIG.oauth2Credentials.client_id,
+    CONFIG.oauth2Credentials.client_secret,
+    CONFIG.oauth2Credentials.redirect_uris[0]
+  )
+
+  const loginLink = oauth2client.generateAuthUrl({
+    access_type: 'offline',
+    scope: CONFIG.oauth2Credentials.scopes
+  })
+
+  return res.render('users/youtube', { loginLink: loginLink })
+})
+
+router.get('/subscription_list', (req, res) => {
+  if (!req.cookies.jwt) {
+    return res.redirect('/users/youtube');
+  }
+
+  const oauth2client = new OAuth2(
+    CONFIG.oauth2Credentials.client_id,
+    CONFIG.oauth2Credentials.client_secret,
+    CONFIG.oauth2Credentials.redirect_uris[0]
+  )
+  oauth2client.credentials = jwt.verify(req.cookies.jwt, CONFIG.JWTsecret);
+
+  // Call the youtube api
+  const service = google.youtube('v3');
+
+  // Get user subscription list
+  service.subscriptions.list({
+    auth: oauth2client,
+    mine: true,
+    part: "snippet,contentDetails",
+    maxResults: 50
+  }).then((response) => {
+    console.log(response)
+
+    return res.render('users/subscriptions', { subscriptions: response.data.items })
+  })
+})
 
 module.exports = router;

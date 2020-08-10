@@ -5,11 +5,11 @@ const passport = require('passport');
 const User = require('../models/User');
 
 module.exports = function (passport) {
-  passport.use(new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
-    User.findOne({ email: email })
+  passport.use(new LocalStrategy({ usernameField: 'username' }, (username, password, done) => {
+    User.findOne({ username: username })
       .then(user => {
         if (!user) {
-          return done(null, false, { message: 'Email not found' });
+          return done(null, false, { message: 'User not found' });
         }
         bcrypt.compare(password, user.password, (err, isMatch) => {
           if (err) throw err;
@@ -30,7 +30,6 @@ module.exports = function (passport) {
 
   passport.deserializeUser((id, done) => {
     User.findById(id, function (err, user) {
-      console.log(`${user} from the passport config file`)
       done(err, user);
     });
   });

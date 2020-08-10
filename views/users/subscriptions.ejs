@@ -1,0 +1,16 @@
+<link rel="stylesheet" href="/css/youtube_styles.css">
+<%- include ('../partials/header') %>
+
+<div class="container">
+  <h1 style="text-align: center;">Your Subscribers List</h1>
+  <ul>
+    <% subscriptions.forEach(function (subscription) { %>
+    <a target="_blank" href="https://www.youtube.com/channel/<%= subscription.snippet.resourceId.channelId %>"><img
+        src="<%= subscription.snippet.thumbnails.default.url %>" alt=""></a>
+    <% }) %>
+
+  </ul>
+</div>
+</body>
+
+</html>

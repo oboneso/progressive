@@ -4,6 +4,32 @@ padding-top: 6px;
 background-image: linear-gradient(to top, #4989ca 0%, #c4d6e7b3 100%);
 
 }
+.WelcomeIcon {
+font-size: 300%;
+}
+
+.ImgWrapper {
+  width: 3rem;
+  height: 3rem;
+  padding: 0px;
+}
+
+.WelcomeImage {
+  max-width: auto;
+  height: 100%;
+}
+
+.WelcomeText {
+  margin-top: 2px;
+  font-size: 100%;
+}
+
+.WelcomeImages {
+  width: 100px;
+  height: 100px;
+  font-size: 16px;
+  margin-bottom: 30px;
+}
 
 .navbar {
   background-image: linear-gradient(to top, #c4d6e7b3 0%, #4989ca 100%);

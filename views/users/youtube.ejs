@@ -1,5 +1,22 @@
 <link rel="stylesheet" href="/css/youtube_styles.css">
 <%- include ('../partials/header') %>
 
-<a href="<%= loginLink %>">Login with Youtube</a>
-<a href="/users/subscription_list">Subscriptions</a>
+
+<div class="row">
+  <a href="<%= loginLink %>">
+    <div class="YouTubeLogin">
+      <div class="YouTubeLink">
+        <div class="YouTubeTitle ">
+          <p class="center">Login with Youtube</p>
+        </div>
+        <img src="/media/youtube.png" class="card-img-top" alt="...">
+      </div>
+  </a>
+</div>
+
+
+
+
+<div class="container">
+  <a href="/users/subscription_list"><button>View your Subscriptions</button></a>
+</div>

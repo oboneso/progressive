@@ -2,21 +2,39 @@
 <%- include ('../partials/header') %>
 
 
-<div class="row">
-  <a href="<%= loginLink %>">
-    <div class="YouTubeLogin">
-      <div class="YouTubeLink">
-        <div class="YouTubeTitle ">
-          <p class="center">Login with Youtube</p>
-        </div>
-        <img src="/media/youtube.png" class="card-img-top" alt="...">
-      </div>
-  </a>
-</div>
+<section>
+  <div class="container">
+    <p>Log In With Google</p>
+    <a href="<%= loginLink %>"><button class="btn" id="authorize-button">Log In</button></a>
+    <button class="btn" id="signout-button">Log Out</button>
 
+
+    <div id="content">
+      <div class="row">
+        <div class="col-6">
+          <form id="channel-form">
+            <div class="input-field">
+              <input type="text" placeholder="Enter Channel Name" id="channel-input">
+              <input type="submit" value="Get Channel Data" class="btn">
+            </div>
+          </form>
+        </div>
+        <div id="channel-data" class="col-6"></div>
+      </div>
+      <div class="row" id="video-container"></div>
+    </div>
+  </div>
+
+</section>
 
 
 
 <div class="container">
   <a href="/users/subscription_list"><button>View your Subscriptions</button></a>
 </div>
+
+<script src="/js/youtube.js"></script>
+<script async defer src="https://apis.google.com/js/api.js" onload="this.onload=function(){};handleClientLoad()"
+  onreadystatechange="if (this.readystate === 'complete' this.onload()">
+  </script>
+<%- include ('../partials/footer') %>

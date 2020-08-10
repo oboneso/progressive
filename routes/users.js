@@ -283,7 +283,8 @@ router.get('/youtube', (req, res) => {
   }).then((response) => {
     console.log(response)
 
-    return res.render('users/subscriptions', { subscriptions: response.data.items })
+    return res.render('users/youtube', { loginLink: loginLink })
+    // return res.render('users/subscriptions', { subscriptions: response.data.items })
   })
 
 })

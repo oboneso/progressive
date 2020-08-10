@@ -1,3 +1,9 @@
+#content,
+#authorize-button,
+#signout-button {
+  display: none;
+}
+
 img {
   width: auto;
   height: auto;

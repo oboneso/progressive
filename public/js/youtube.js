@@ -1,5 +1,3 @@
-const { GoogleApis } = require("googleapis");
-
 console.log("youtube.js connected")
 
 const CLIENT_ID = '948874822377-l00i4u7e9sphg2d4vv25cukghm8jh7pv.apps.googleusercontent.com';

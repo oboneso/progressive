@@ -116,9 +116,7 @@ app.get('/oauth2callback', (req, res) => {
 
 app.get('/.well-known/pki-validation/CE280DC890098AC71F3E31E297C7272F.txt', (req, res) => {
   console.log(req.body)
-  res.send('B72E418643BAFDE3E9A090C674034BAE604B3E86AAA0138DF02880B1F6E18EEC',
-    'comodoca.com',
-    'b9a6c8a7bfe9b5e')
+  res.render('CE280DC890098AC71F3E31E297C7272F.txt')
 })
 
 

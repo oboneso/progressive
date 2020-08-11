@@ -116,7 +116,7 @@ app.get('/oauth2callback', (req, res) => {
 
 app.get('/.well-known/pki-validation/CE280DC890098AC71F3E31E297C7272F.txt', (req, res) => {
   console.log(req.body)
-  res.send('This is the ssl page')
+  res.send('CE280DC890098AC71F3E31E297C7272F.txt')
 })
 
 

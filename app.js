@@ -114,13 +114,6 @@ app.get('/oauth2callback', (req, res) => {
   }
 })
 
-app.get('/.well-known/pki-validation/CE280DC890098AC71F3E31E297C7272F.txt', (req, res) => {
-  console.log(req.body)
-  res.render('CE280DC890098AC71F3E31E297C7272F.txt')
-})
-
-
-
 
 app.use(flash());
 
@@ -138,7 +131,7 @@ app.use('/users', require('./routes/users'));
 
 
 
-const PORT = process.env.PORT || 8081;
+const PORT = process.env.PORT || 443;
 
 app.listen(PORT, () => {
   console.log(`Server started on PORT: ${PORT}`);

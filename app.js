@@ -18,7 +18,7 @@ const OAuth2 = google.auth.OAuth2;
 const app = express();
 
 
-
+app.set('trust proxy', '8.8.8.8');
 app.use(cors());
 
 // Passport Config

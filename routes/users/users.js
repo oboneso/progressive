@@ -35,13 +35,12 @@ router.post('/login', async (req, res, next) => {
 // Dashboard ------------------------------------------------------
 // Dashboard - GET dashboard page
 router.get('/dashboard', ensureAuthenticated, async (req, res, next) => {
-  const ip = req.connection.publicAddress
-  console.log(ip)
+  const ip_address = req.connection.remoteAddress
   const userId = req.user._id;
   const name = req.user.name;
   const username = req.user.username;
   try {
-    const tracker = new LoginLogoutTracker({ userId, name, username, login: true, logout: false })
+    const tracker = new LoginLogoutTracker({ userId, name, username, login: true, logout: false, ip_address: ip_address })
     await tracker.save();
 
   } catch (err) {
@@ -134,11 +133,12 @@ router.post('/register', (req, res) => {
 
 
 router.get('/logout', ensureAuthenticated, async (req, res) => {
+  const ip_address = req.connection.remoteAddress
   const userId = req.user._id;
   const name = req.user.name;
   const username = req.user.username;
   try {
-    const tracker = new LoginLogoutTracker({ userId, name, username, login: true, logout: false })
+    const tracker = new LoginLogoutTracker({ userId, name, username, login: true, logout: false, ip_address: ip_address })
     await tracker.save();
 
   } catch (err) {

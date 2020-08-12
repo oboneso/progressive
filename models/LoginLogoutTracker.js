@@ -25,7 +25,11 @@ const LoginLogoutTrackerSchema = new Schema({
     type: Date,
     required: true,
     default: Date.now
+  },
+  ip_address: {
+    type: String
   }
+
 }, { collection: 'LoginLogoutTracker' });
 
 const LoginLogoutTracker = mongoose.model('LoginLogoutTracker', LoginLogoutTrackerSchema)

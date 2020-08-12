@@ -16,8 +16,7 @@ const jwt = require('jsonwebtoken');
 const OAuth2 = google.auth.OAuth2;
 
 const app = express();
-const AWSXRay = require('aws-xray-sdk');
-app.use(AWSXRay.express.openSegment('MyApp'));
+
 
 
 app.use(cors());
@@ -131,9 +130,8 @@ app.use((req, res, next) => {
 
 // Routes
 app.use('/', require('./routes/index'));
-app.use('/users', require('./routes/users'));
+app.use('/users', require('./routes/users/users'));
 
-app.use(AWSXRay.express.closeSegment());
 
 const PORT = process.env.PORT || 8081;
 

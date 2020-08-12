@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 const User = require('../models/User')
 
-const todoTaskSchema = new mongoose.Schema({
+const todoTaskSchema = Schema({
   content: {
     type: String,
     required: true

@@ -1,4 +1,11 @@
 console.log("youtube.js connected")
+const CONFIG = require('../../config');
+const google = require('googleapis').google;
+const jwt = require('jsonwebtoken');
+const OAuth2 = google.auth.OAuth2;
+const cookieParser = require("cookie-parser");
+
+
 
 const CLIENT_ID = '948874822377-l00i4u7e9sphg2d4vv25cukghm8jh7pv.apps.googleusercontent.com';
 const DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest"];

@@ -20,3 +20,4 @@ const updateTitle = () => {
     updateHeaderText.classList.remove('nav-link');
   }
 };
+

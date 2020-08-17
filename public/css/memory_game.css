@@ -1,0 +1,60 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: rgb(0, 0, 255);
+}
+
+.player1 {
+  background: #1c7ccc;
+  border-radius: 5px;
+}
+.player2 {
+  background: #1c7ccc;
+  border-radius: 5px;
+}
+
+.memory-game {
+  display: flex;
+  flex-wrap: wrap;
+  perspective: 1000px;
+}
+
+.memory-card {
+  width: 100px;
+  height: 200px;
+  margin: 5px;
+  transform-style: preserve-3d;
+  transition: transform .5s;
+}
+
+.memory-card:active {
+  transform: scale(.97);
+  transition: transform .4s;
+}
+
+.memory-card.flip {
+  transform: rotateY(180deg);
+}
+
+.front-face,
+.back-face {
+  width: 100px;
+  height: 200px;
+  padding: 20px;
+  position: absolute;
+  border-radius: 5px;
+  background: #1c7ccc;
+  backface-visibility: hidden;
+}
+
+.front-face {
+  transform: rotateY(180deg);
+}
+
+img {
+  width: 100px;
+}

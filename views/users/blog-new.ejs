@@ -3,19 +3,24 @@
 
 <div class="container">
 
-  <button class=""><a href="/users/blog">back</a> </button>
+  <button class="">
+    <a href="/users/blog">
+      <i id="" class="fas fa-chevron-left"></i>
+      <span class="ml-2"> BLOG</span>
+    </a>
+  </button>
 
 
   <!-- Create Blog Post -->
-  <form action="/users/blog" enctype="multipart/form-data" method="POST">
+  <form action="/users/blog-new" method="POST">
     <!-- Title -->
     <div class="center Card">
       <div class="CardInner">
         <div class="Icon">
-          <label for="">Title</label>
+          <label for="title">Title</label>
         </div>
         <div class="InputContainer">
-          <input type="text" name="title" class="" id="exampleFormControlInput1" placeholder="Click here...">
+          <input type="title" name="title" class="form-control" id="" placeholder="Click here...">
         </div>
       </div>
     </div>
@@ -23,40 +28,31 @@
     <div class="center Card">
       <div class="CardInner">
         <div class="Icon">
-          <label>Post</label>
+          <label for="body">Post</label>
         </div>
         <div class="InputContainer">
-          <textarea type="text" name="body" class="" id="exampleFormControlInput1" rows="6"
-            placeholder="Click here..."></textarea>
+          <textarea type="body" name="body" class="form-control" id="" rows="6" placeholder="Click here..."></textarea>
         </div>
       </div>
     </div>
-    <div class="row">
-      <!-- Author -->
-      <div class="col-6 center Card">
-        <div class="CardInner">
-          <div class="Icon">
-            <label for="">Author</label>
-          </div>
-          <div class="InputContainer form-group">
-            <input type="text" class="" id="exampleFormControlInput1" placeholder="<%- username %>">
-          </div>
+    <!-- Author -->
+    <div class="center Card">
+      <div class="CardInner">
+        <div class="Icon">
+          <label for="">Author</label>
+        </div>
+        <div class="InputContainer">
+          <input name="username" type="text" class="" id="" value="<%- `   ${username}` %>"
+            placeholder="<%- username %>">
         </div>
       </div>
-      <!-- Image -->
-      <div class="col-6 center Card">
-        <div class="CardInner">
-          <div class="Icon">
-            <label for="exampleFormControlFile1">>Image</label>
-          </div>
-          <div class="InputContainer form-group">
-            <input type="file" name="image" class="form-control-file" id="exampleFormControlFile1">
-          </div>
-        </div>
-      </div>
+    </div>
+    <!-- Image -->
 
+    <div class="container">
+      <button type="submit" class="btn center">SUBMIT</button>
     </div>
-    <button>Submit</button>
+
   </form>
 
 </div>

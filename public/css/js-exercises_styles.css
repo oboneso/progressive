@@ -1,0 +1,24 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #f8f8f8;
+}
+
+.wrapper {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.item {
+  background: 58d5f6;
+  color: white;
+  padding: 10px;
+}
+
+.item:nth-child(even) {
+  background: 236fc8
+}

@@ -8,6 +8,13 @@ background-image: linear-gradient(to top, #4989ca 0%, #c4d6e7b3 100%);
 font-size: 300%;
 }
 
+.table-data {
+  font-size: .5em;
+}
+
+.table-head {
+ font-size: .7em;
+}
 .ImgWrapper {
   width: 3rem;
   height: 3rem;

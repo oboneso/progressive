@@ -11,6 +11,10 @@ const blogSchema = new Schema({
     type: String,
     required: true
   },
+  username: {
+    type: String,
+    required: true
+  },
   image: {
     type: String,
   },
@@ -22,7 +26,11 @@ const blogSchema = new Schema({
     type: Date,
     default: Date.now
   }
-});
+}, { collection: 'blogs' });
 
-module.exports = mongoose.model('Blog', blogSchema);
 
+const Blog = mongoose.model('Blog', blogSchema);
+
+
+
+module.exports = Blog;

@@ -32,7 +32,7 @@ button:hover {
 }
 
 .CardInner {
-  background: #e2e9f4;
+  background: #d3def0;
   border-radius: var(--border-radius);
   padding: 10px;
 }
@@ -81,7 +81,7 @@ textarea {
 }
 
 textarea:placeholder {
-  color: #6d7f8f
+  color: #6d7f8f;
 }
 
 textarea:focus {
@@ -93,6 +93,7 @@ textarea:focus {
 input:placeholder {
   color: #6d7f8f
 }
+
 
 input:focus {
   outline: none;
@@ -114,4 +115,16 @@ input:focus {
 
 .Sidebar {
   width: 100%;
+}
+.img-thumbnail {
+  width: 100px;
+  height: auto;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.card-text-body {
+  font-size: .7em;
+  
 }

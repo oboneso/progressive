@@ -7,7 +7,7 @@
 <div class="center Card mt-5 mb-5">
     <form action="/users/todo" method="POST">
         <div class="input-group input-group-md">
-            <input type="text" class="form-control" name="content" placeholder="Add New Todo"
+            <input type="text" id="todo-input" class="form-control" name="content" placeholder="Add New Todo"
                 value="<%= typeof content != 'undefined' ? content : '' %>" />
             <div class="input-group-append">
                 <button class="btn btn-outline-secondary" type="submit">Submit </button>
@@ -39,8 +39,5 @@
 </div>
 <% }) %>
 
-
-
-
-
+<script src="/js/todo-onpage.js"></script>
 <%- include ('../partials/footer') %>

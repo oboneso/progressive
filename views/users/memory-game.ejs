@@ -1,0 +1,69 @@
+<link rel="stylesheet" href="/css/memory_game.css">
+
+
+<%- include ('../partials/header') %>
+<div class="container">
+
+
+  <div class="players">
+    <div class="container">
+      <div id="player1" class="player1 m-1 p-2">Player 1
+        <div id="player1-cards" class="row">
+
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div id="player2" class="player2 m-1 p-2">Player 2</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="memory-game">
+      <div class="row m-1">
+        <div class="memory-card col m-1" data-framework="ember">
+          <img class="front-face" src="/media/img/ember.svg" alt="ember">
+          <img class="back-face" src="/media/img/js-badge.svg" alt="JS Badge">
+        </div>
+        <div class="memory-card col m-1" data-framework="ember">
+          <img class="front-face" src="/media/img/ember.svg" alt="ember">
+          <img class="back-face" src="/media/img/js-badge.svg" alt="JS Badge">
+        </div>
+        <div class="memory-card col m-1" data-framework="backbone">
+          <img class="front-face" src="/media/img/backbone.svg" alt="backbone">
+          <img class="back-face" src="/media/img/js-badge.svg" alt="JS Badge">
+        </div>
+        <div class="memory-card col m-1" data-framework="backbone">
+          <img class="front-face" src="/media/img/backbone.svg" alt="backbone">
+          <img class="back-face" src="/media/img/js-badge.svg" alt="JS Badge">
+        </div>
+      </div>
+      <div class="row m-1">
+        <div class="memory-card col m-1" data-framework="react">
+          <img class="front-face" src="/media/img/react.svg" alt="react">
+          <img class="back-face" src="/media/img/js-badge.svg" alt="JS Badge">
+        </div>
+
+        <div class="memory-card col m-1" data-framework="react">
+          <img class="front-face" src="/media/img/react.svg" alt="react">
+          <img class="back-face" src="/media/img/js-badge.svg" alt="JS Badge">
+        </div>
+        <div class="memory-card col m-1" data-framework="aurelia">
+          <img class="front-face" src="/media/img/aurelia.svg" alt="aurelia">
+          <img class="back-face" src="/media/img/js-badge.svg" alt="JS Badge">
+        </div>
+        <div class="memory-card col m-1" data-framework="aurelia">
+          <img class="front-face" src="/media/img/aurelia.svg" alt="aurelia">
+          <img class="back-face" src="/media/img/js-badge.svg" alt="JS Badge">
+        </div>
+      </div>
+
+    </div>
+
+
+
+  </div>
+</div>
+<script src="/js/memory_game.js"></script>
+
+<%- include ('../partials/footer') %>

@@ -1,33 +1,28 @@
 <link rel="stylesheet" href="/css/blog_styles.css">
 <%- include ('../partials/header') %>
 
-<div class="row">
 
 
 
-  <div class="Sidebar col-12 col-sm-3 col-md-3">
-    <button class=""><a href="/users/blog-new">Create New</a> </button>
-  </div>
-
-  <div class="MainBody col-12 col-sm-9 col-md-8">
-    <% blogPost.forEach(details => { %>
-    <div class="card mb-3" style="max-width: 540px;">
-      <div class="row no-gutters">
-        <div class="col-md-4">
-          <img src="/media/udemy.jpg" class="card-img" alt="...">
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title"> <%= details.title %></h5>
-            <p class="card-text"> <%= details.body %></p>
-            <p class="card-text"><small class="text-muted"><%= details.date %></small></p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <% }) %>
-  </div>
-
-
+<div class="">
+  <button class=""><a href="/users/blog-new">Create New</a> </button>
 </div>
+
+<div class="container">
+  <% blogPost.forEach(details => { %>
+  <div class="container card mb-4">
+    <img src="/media/udemy.jpg" class="img-thumbnail mt-2" alt="...">
+
+
+
+    <div class="card-body">
+      <h5 class="card-title"> <%= details.title %></h5>
+      <p class="card-text card-text-body"><%= details.body %></p>
+      <p class="card-text"><small class="text-muted"><%= moment(details.date).format( 'MMM-DD-YYYY') %></small></p>
+    </div>
+  </div>
+  <% }) %>
+</div>
+
+
 <%- include ("../partials/footer") %>

@@ -1,0 +1,156 @@
+<%- include ('../partials/header') %>
+<link rel="stylesheet" href="/css/exercises1.css">
+<link rel="stylesheet" href="/css/sidebar.css">
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=sunburst"></script>
+
+<%- include ("../partials/navbar") %>
+
+<div class="container">
+  <%- include ("../partials/sidebar") %>
+
+<div class="exercises-container">
+
+<div class="accordion" id="accordionExample">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+        <button class="btn btn-link btn-block title" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+         Function Exercise 1: Password Validator
+        </button>
+    </div>
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="card-body">
+        <h5>
+          Write an <span class="title-span">isValidPassword</span> function.
+        </h5>
+        <p>It accept 2 arguments: password and username</p>
+
+        <ul>
+          <p>Password must:</p>
+          <li>be at least 8 characters</li>
+          <li>cannot contain the username</li>
+          <li>cannot contain spaces</li>
+          * if all the requirements are met, return true.
+          // otherwise false
+        </ul>
+      
+        <div class="">
+          <pre class="prettyprint codesize">
+const checkPassword = (user, pass) => {
+  if (pass.length >= 8 && !pass.includes(user) && !pass.includes(' ')) {
+    return true;
+  } else {
+    return false;
+  };
+};
+
+checkPassword('hellothere', '1234mypass'); // true
+checkPassword('someuser', '12someuser21'): // false</pre>
+        </div>    
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+        <button class="btn btn-link btn-block collapsed title" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Function Exercise 2: Average
+        </button>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+      <div class="card-body">
+        <h5>
+          Write a function to find the average value in an array of numbers.
+        </h5>
+        <div class="">
+          <pre class="prettyprint codesize">
+const numbers = [2342, 234, 23, 534, 3453];
+
+const average = (arr) => {
+  let total = 0;
+  for (let currentNum of arr) {
+    total += currentNum;
+  };
+  const avg = total / arr.length;
+  return avg;
+}; </pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- exercise 3 -->
+  <div class="card">
+    <div class="card-header" id="headingThree">
+        <button class="btn btn-link btn-block collapsed title" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Function Exercise 3: Pangrams
+        </button>
+    </div>
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+      <div class="card-body">
+        <h5>
+          Write a function called isPangram, which checks to see if a given sentence contains every letter of the alphabet. Make sure you ignore string casing. 
+        </h5>
+          <pre class="prettyprint codesize">
+const alphabet = [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i','k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v','x', 'y', 'z']
+const pangram = "The five boxing wizards jump quick."
+
+const isPangram = (characters, sentence) => {
+  let check = 0;
+  const lowerCaseSentence = sentence.toLowerCase();
+  for (let singleCharacter of characters) {
+    if (!lowerCaseSentence.includes(singleCharacter)) {
+      check += 1;
+    }
+  }
+  if (check === 0) {
+    console.log('Is pangram');
+  } else {
+    console.log('Is not pangram');
+  }
+}; </pre>
+        </div>
+      </div>
+    </div>
+
+  
+  <!-- exercise 4 -->
+  <div class="card">
+    <div class="card-header" id="headingThree">
+        <button class="btn btn-link btn-block collapsed title" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          <!-- title -->
+          Function Exercise 4: Get Playing Card
+        </button>
+    </div>
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+      <div class="card-body">
+        <!-- body -->
+        <h5>
+          Write a getCard() function which returns a random playing card object.
+        </h5>
+          <pre class="prettyprint codesize">
+const value = ['2', '3', '4', '5', '6', '7', '8', '9', '10','Q', 'K']
+const suit = ['clubs', 'hearts', 'diamonds', 'spades']
+
+const pickACard = (arr1, arr2) => {
+  const randomValue = Math.floor(Math.random() * arr1.length)
+  const randomSuit = Math.floor(Math.random() * arr2.length)
+  return { value: value[randomValue], suit: suit[randomSuit] }
+  // console.log(card)
+}
+
+
+const pick = (arr) => {
+  const idx = Math.floor(Math.random() * arr.length)
+  return arr[idx]
+}
+
+const getCard = (arr1, arr2) => {
+  return { value: pick(arr1), suit: pick(arr2) }
+}; </pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="/js/exercises1.js"></script>
+<%- include ("../partials/footer") %>

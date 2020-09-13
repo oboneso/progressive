@@ -1,0 +1,74 @@
+<%- include ('../partials/header') %>
+<link rel="stylesheet" href="/css/sidebar.css">
+<link rel="stylesheet" href="/css/media_styles.css">
+<style>
+  .profile-grid {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: minmax(min-content, max-content);
+  width: 75vw;
+  margin-left: 0;
+  height: 100vh;
+  /* background: silver; */
+  box-shadow: 0 0 10px;
+  justify-items: center;
+  justify-self: center;
+}
+</style>
+
+  <%- include ("../partials/navbar") %>
+<div class="container">
+  <%- include ("../partials/sidebar") %>
+  <div class="profile-grid">
+    <div id="modal" class="modal">
+      <img src="" alt="" class="full-img">
+      <p class="caption">sfsfadfasfadsfsafvsdfvs</p>
+  </div>
+  
+    <div>
+      <form class="photo-upload-form" action="/media" method="POST" enctype="multipart/form-data">
+        <label for="">Upload Image</label>
+        <input type="file" name="image" class="form-control-file" id="exampleFormControlFile1">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+      <div id="gallery" class="gallery">
+        <% for (let image of images) { %>
+          <div class="img-container">
+    
+            <img id="media-image" class="img-user overlay" src="<%= image %>" alt="img-user" data-original="somephoto.jpeg" />
+          </div>
+        <% } %>
+      </div>     
+    </div>
+  
+  </div>
+
+</div>
+
+</div>
+
+<script>
+  const modal = document.querySelector('.modal')
+  const previews = document.querySelectorAll('#gallery img')
+  const imgText = document.querySelector('.caption')
+  const original = document.querySelector('.full-img')
+
+  previews.forEach((preview) => {
+    preview.addEventListener('click', (e) => {
+      console.log('click recognized')
+      console.log(`e.target.src: ${e.target.src}`)
+      original.src = e.target.src
+      modal.classList.add('open')
+    })
+  })
+
+  modal.addEventListener('click', () => {
+    modal.classList.remove('open')
+    original.src = ''
+  })
+
+</script>
+<script src="/js/script.js"></script>
+<%- include ("../partials/footer") %>

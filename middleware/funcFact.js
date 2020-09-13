@@ -4,8 +4,9 @@ module.exports = {
   res.locals.success_msg = req.flash('success_msg');
   res.locals.error_msg = req.flash('error_msg');
   res.locals.error = req.flash('error');
+  res.locals.deleted_msg = req.flash('deleted_msg');
   next()
-},
+}
 
 function setUser(req, res, next) {
   const userId = req.body.userId;
@@ -14,4 +15,5 @@ function setUser(req, res, next) {
   }
   next()
 }
+
 }

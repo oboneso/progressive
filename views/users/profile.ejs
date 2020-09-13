@@ -1,0 +1,97 @@
+<%- include ('../partials/header') %>
+<link rel="stylesheet" href="/css/sidebar.css">
+<link rel="stylesheet" href="/css/profile_styles.css">
+
+
+<%- include ('../partials/navbar') %>
+
+<div class="container">
+  <%- include ('../partials/sidebar') %>
+  <div class="profile-grid">
+
+    <div class="name-div">
+      <p class="name">Welcome back, <%- name.toUpperCase() %>!</p>
+    </div>
+
+    <div class="avatar-div">
+      <img src="<%- avatar %>" alt="" class="avatar">
+      <div class="icon-circle">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary changeImageButton" data-toggle="modal" data-target="#exampleModal">edit</button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                
+                <!-- Change Profile Image Modal Body -->
+                <form action="/profile" enctype="multipart/form-data" method="post">
+                  <div class="form-group">
+                    <label for="">Update Profile Image</label>
+                    Update Profile Image
+                    <input type="file" class="form-control" name="image">
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <input type="submit" class="btn btn-primary">Save changes</button>
+                  </div>
+    
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="profile-input">
+          <label for="">username</label>
+          <span>
+            <i class="fas fa-at"></i>
+            <input id="profile-form-username" disabled placeholder="<%- username %>"> </span>
+      </div>
+      
+      <div class="profile-input">
+
+          <label for="">email</label>
+          <span>
+            <i class="fas fa-envelope-open-text"></i>
+            <input disabled placeholder="<%- email %>">          
+          </span>
+      </div>
+
+      <div class="profile-input">
+        <label for="">phone</label>
+          <span>
+            <i class="fas fa-map-marker-alt"></i>
+            <input id="profile-form-phonr" disabled type="text" placeholder="phone number">
+          </span>
+      </div>
+      
+      <div class="profile-input">
+        <form action=""></form>
+          <label for="">user id</label>
+            <span>
+              <i class="far fa-id-card"></i>
+              <input disabled placeholder="<%- id %>">
+            </span>
+        </form>
+      </div>
+
+  
+    </div>
+  </div>
+</div>
+
+
+<script src="/js/profile"></script>
+
+<%- include ('../partials/footer') %>

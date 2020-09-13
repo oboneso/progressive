@@ -1,0 +1,60 @@
+.exercises-container {
+  display: grid;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-auto-rows: minmax(50px, max-content);
+  width: 100%;
+  padding: 10px;
+
+}
+
+.accordion {
+  width: 90%;
+  justify-self: center;
+  border: 1px solid #7395ae84;
+}
+
+
+.title {
+  font-size: 3vw;
+  text-transform: none;
+  background: #7395ae84 !important;
+  width: 90% !important;
+}
+
+.btn {
+}
+
+.card {
+  border: none;
+}
+.card-header {
+  font-size: 3vw;
+  text-align: center !important;
+  background: none;
+  border: none;
+}
+
+h5 {
+font-size: 2vw;
+}
+.title-span {
+  font-style: italic;
+  padding: 2px;
+}
+
+p {
+  font-size: 1.5vw;
+}
+
+ul {
+  font-size: 1.5vw;
+}
+
+li {
+  font-size: 1.5vw;
+}
+
+.codesize {
+  font-size: 1.3vw;
+}

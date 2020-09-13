@@ -1,28 +1,56 @@
-<link rel="stylesheet" href="/css/blog_styles.css">
 <%- include ('../partials/header') %>
+<link rel="stylesheet" href="/css/blog_styles.css">
+<link rel="stylesheet" href="/css/sidebar.css">
 
-
-
-
-<div class="">
-  <button class=""><a href="/users/blog-new">Create New</a> </button>
-</div>
+<%- include ("../partials/navbar") %>
 
 <div class="container">
-  <% blogPost.forEach(details => { %>
-  <div class="container card mb-4">
-    <img src="/media/udemy.jpg" class="img-thumbnail mt-2" alt="...">
+  <%- include ("../partials/sidebar") %>
 
+  <div class="blog-container">
+    <div class="createPostDiv">
+      <a href="/blog/new"><button class="createPostBtn" >Create New Blog Post</button></a>
+    </div>
+    <div class="border-bottom"></div>
 
-
-    <div class="card-body">
-      <h5 class="card-title"> <%= details.title %></h5>
-      <p class="card-text card-text-body"><%= details.body %></p>
-      <p class="card-text"><small class="text-muted"><%= moment(details.date).format( 'MMM-DD-YYYY') %></small></p>
+    <div class="all-posts">
+      <%- include ("../partials/messages") %>
+      <% blogPost.forEach(details => { %>
+        <form action="/blog/:<%- id %>" method="get"></form>
+        <div class="single-blog-post">
+          <div class="img-container">
+            <img src="<%= details.image %>" class="img-user overlay" alt="...">
+          </div>
+          
+          <div class="blog-grid-body">
+            <h5 class="card-title"> 
+              <%= details.title %>
+            </h5>
+            <p class="card-text">
+              <%= details.body %>
+            </p>
+          </div>
+          
+          <p class="post-date">
+            <small class="text-muted">
+              <%= details.date %>
+            </small>
+          </p>
+        </div>
+        <div class="border-bottom"></div>
+  
+      <% }) %>
+  
     </div>
   </div>
-  <% }) %>
 </div>
 
 
-<%- include ("../partials/footer") %>
+</div>
+
+
+
+
+  <script src="/js/blog.js">
+  </script>
+  <%- include ("../partials/footer") %>

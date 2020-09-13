@@ -1,0 +1,13 @@
+{
+  "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
+  "notebook.kernelProviderAssociations": [
+    
+  
+  ],
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  "html.format.contentUnformatted": "",
+  "html.format.wrapLineLength": 80,
+  "javascript.format.semicolons": "insert",
+  "liveServer.settings.port": 8082
+}

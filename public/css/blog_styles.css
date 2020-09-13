@@ -109,9 +109,7 @@ input:focus {
   overflow: hidden;
 }
 
-.MainBody {
-  width: 100%;
-}
+
 
 .Sidebar {
   width: 100%;
@@ -128,3 +126,129 @@ input:focus {
   font-size: .7em;
   
 }
+
+.blog-container {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: minmax(10vh, max-content);
+  width: 100%;
+  margin-left: 0;
+  height: 100%;
+  /* background: silver; */
+  /* box-shadow: 0 0 10px; */
+  justify-items: center;
+  justify-self: center; 
+}
+  
+.all-posts {
+  display: grid;
+  justify-content: center;
+  width: 100%;
+
+}
+  .single-blog-post {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: auto max-content;
+    width: 100%;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    padding: 1vh;
+    margin: 1vw;
+    justify-self: center;
+  }
+
+  .border-bottom {
+    margin: 0;
+    padding: 0;
+    height: 0;
+    border-bottom: 2px solid black;
+    width: 70%;
+    justify-self: center;
+  }
+
+
+  .hide {
+    visibility: hidden;
+  }
+
+  .img-container {
+    width: 75px;
+    height: 75px;
+    align-self: center;
+    justify-content: center;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    border: 1px solid grey;
+    margin: 1vw;
+    
+  }
+
+.img-user {
+height: 100%;
+width: 100%;
+}
+.createPostDiv {
+  margin-bottom: 20px;
+}
+.createPostBtn {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 5px;
+  font-size: 100%;
+  border: 1px solid #ffffff51;
+  border-radius: 5px;
+  background: #557A95;
+  color: white;
+
+
+}
+
+.createPostBtn:hover {
+  background: white;
+  color: #557A95;
+  border: 1px solid #557A95;
+
+}
+
+  .blog-grid-body {
+    display: grid;
+    grid-template-rows: max-content auto;
+    width: 100%;
+    grid-column-start: 2;
+    grid-column-end: 4;
+
+  }
+  .card-title {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    font-size: 3vw;
+    width: 90%
+  }
+
+  .card-text {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    font-size: 2vw;
+    text-align: left;
+    width: 90%
+
+  }
+  
+  .post-date {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    font-size: 1.5vw;
+
+  }

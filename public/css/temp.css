@@ -1,0 +1,138 @@
+
+.fixed-bottom {
+  line-height: 2.5em;
+  padding-top: 6px;
+  background-image: linear-gradient(to top, #4989ca 0%, #c4d6e7b3 100%);
+  
+  }
+  .WelcomeIcon {
+  font-size: 300%;
+  }
+  
+  .table-data {
+    font-size: .5em;
+  }
+  
+  .table-head {
+   font-size: .7em;
+  }
+  .ImgWrapper {
+    width: 3rem;
+    height: 3rem;
+    padding: 0px;
+  }
+  
+  .WelcomeImage {
+    max-width: auto;
+    height: 100%;
+  }
+  
+  .WelcomeText {
+    margin-top: 2px;
+    font-size: 100%;
+  }
+  
+  .WelcomeImages {
+    width: 100px;
+    height: 100px;
+    font-size: 16px;
+    margin-bottom: 30px;
+  }
+  
+  .navbar {
+    background-image: linear-gradient(to top, #c4d6e7b3 0%, #4989ca 100%);
+  }
+  
+  a {
+    color: black;
+  }
+  
+  * {box-sizing: border-box;}
+  
+  /* Style the input container */
+  .input-container {
+    display: flex;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+  /* Style the form icons */
+  .icon {
+    padding: 10px;
+    /* background:lightgrey; */
+    color: black;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 1.0em;
+  }
+  
+  /* Style the input fields */
+  .input-field {
+    width: 100%;
+    padding: 10px;
+    outline: none;
+  }
+  
+  .input-field:focus {
+    border: 2px solid dodgerblue;
+  }
+  
+  .mobile-row {
+    background-color: rgba(211, 211, 211, 0.5);
+    border: 1px solid black;
+    border-radius: 8px;
+    height: 80px;
+    margin-bottom: 2px;
+    width: 70px;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .icon-title {
+    font-size: .8em;
+    text-align: center;
+    color: black;
+  }
+  
+  .main-icon {
+    font-size: 2em;
+  }
+  
+  .dashboard-nav_button {
+    background-image: linear-gradient(to top, #a9b8c9 0%, #c4d6e7b3 100%);
+    color: black;
+    border: 1px solid black;
+  }
+  
+  .btn {
+    padding: 5px;
+  }
+  
+  .dashboard-header {
+    background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
+    margin-bottom: 7px;
+    line-height: 2.5em;
+  }
+  
+  
+  @media (min-width: 481px) and (max-width: 767px) {
+  
+    img-thumbnail {
+    display: block;
+    max-width: 10%;
+    height: auto;
+  }
+  .media {
+    border: 1px solid grey;
+    font-size: 12px;
+  }
+  
+  }
+  
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }

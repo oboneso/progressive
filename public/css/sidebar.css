@@ -1,0 +1,71 @@
+body {
+  height: 100vh;
+}
+.container {
+  display: grid;
+  grid-template-columns: 25vw 75vw;
+  grid-template-rows: 1fr 1fr; 
+  grid-auto-rows: minmax(50px, max-content);
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.btn-container {
+  position: fixed;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  display: grid;
+  grid-auto-rows: minmax(50px, max-content);
+  width: 25vw;
+  justify-self: left;
+  vertical-align: middle;
+  height: 100vh;
+  margin: 0;
+  box-shadow: 0 0 10px;
+  }
+
+.btn {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 5px;
+  font-size: 100%;
+  border: 1px solid #ffffff51;
+  border-radius: 0;
+  background: #557A95; 
+}
+
+.btn:hover {
+  background: white;
+  color: #557A95;
+  border: .5px solid #557A95;
+  font-size: 100%;
+}
+
+.btn-text {
+  font-size: 2vw;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
+}
+
+.main-icon {
+  margin-right: 1vw;
+  font-size: 2vw;
+}
+
+.btn-extra {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+
+  font-size: 100%;
+  border: 1px solid #ffffff51;
+  vertical-align: middle;
+  border-radius: 0;
+  background: #557A95;
+  border-radius: 0;
+}
